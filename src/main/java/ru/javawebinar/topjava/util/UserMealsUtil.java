@@ -33,8 +33,8 @@ public class UserMealsUtil {
         mealsToWithStreams.forEach(System.out::println);
     }
 
-    public static List<UserMealWithExcess> filteredByCycles(List<UserMeal> meals, LocalTime startTime
-            , LocalTime endTime, int caloriesPerDay) {
+    public static List<UserMealWithExcess> filteredByCycles(List<UserMeal> meals, LocalTime startTime,
+                                                            LocalTime endTime, int caloriesPerDay) {
         Map<LocalDate, Integer> factCaloriesPerDay = new HashMap<>();
         meals.forEach(userMeal ->
                 factCaloriesPerDay.merge(userMeal.getDate(), userMeal.getCalories(), Integer::sum)
