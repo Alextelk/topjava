@@ -16,15 +16,13 @@ import static ru.javawebinar.topjava.util.MealsUtil.CALORIES_PER_DAY;
 import static ru.javawebinar.topjava.util.MealsUtil.meals;
 
 public class MealsServlet extends HttpServlet {
-    private static final Logger log = getLogger(UserServlet.class);
-    private final MealsUtil mealsUtil = new MealsUtil();
-
+    private static final Logger log = getLogger(MealsServlet.class);
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        log.debug("redirect to meals");
-        List<MealTo> mealsList = mealsUtil.getMealTo(meals, CALORIES_PER_DAY);
+        List<MealTo> mealsList = MealsUtil.getMealTo(meals, CALORIES_PER_DAY);
         request.setAttribute("mealsList", mealsList);
+        log.debug("forward to meals");
         request.getRequestDispatcher("/meals.jsp").forward(request, response);
     }
 }

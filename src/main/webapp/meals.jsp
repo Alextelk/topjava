@@ -32,30 +32,14 @@
         <td></td>
         <td></td>
     </tr>
-
     <c:forEach var="meal" items="${mealsList}">
-        <c:choose>
-            <c:when test="${meal.excess}">
-
-                <tr>
-                    <td style="color:red"><c:out value="${meal.dateTime}"/></td>
-                    <td style="color:red"><c:out value="${meal.description}"/></td>
-                    <td style="color:red"><c:out value="${meal.calories}"/></td>
-                    <td><a href="">update</a></td>
-                    <td><a href="">delete</a></td>
-                </tr>
-            </c:when>
-            <c:otherwise>
-                <tr>
-                    <td style="color:green"><c:out value="${meal.dateTime}"/></td>
-                    <td style="color:green"><c:out value="${meal.description}"/></td>
-                    <td style="color:green"><c:out value="${meal.calories}"/></td>
-                    <td><a href="">update</a></td>
-                    <td><a href="">delete</a></td>
-                </tr>
-            </c:otherwise>
-        </c:choose>
-
+        <tr style="color:${meal.excess?'red':'green'}">
+            <td>${meal.dateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"))}</td>
+            <td>${meal.description}</td>
+            <td>${meal.calories}</td>
+            <td><a href="">update</a></td>
+            <td><a href="">delete</a></td>
+        </tr>
     </c:forEach>
     </tr>
 </table>
