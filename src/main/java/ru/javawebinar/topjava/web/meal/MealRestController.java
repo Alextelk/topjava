@@ -15,7 +15,7 @@ import static ru.javawebinar.topjava.util.ValidationUtil.checkNew;
 public class MealRestController {
     private final MealService service;
 
-    protected final Logger log = LoggerFactory.getLogger(getClass());
+    private final Logger log = LoggerFactory.getLogger(getClass());
 
     public MealRestController(MealService service) {
         this.service = service;
@@ -26,10 +26,10 @@ public class MealRestController {
         return service.get(id, userId);
     }
 
-    public Meal save(Meal meal, int userId) {
+    public Meal create(Meal meal, int userId) {
         log.info("create meal{}", meal);
         checkNew(meal);
-        return service.save(meal, userId);
+        return service.create(meal, userId);
     }
 
     public void delete(int id, int userId) {
